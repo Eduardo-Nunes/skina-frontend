@@ -1,0 +1,28 @@
+:root {
+    font-family: "Roboto", system-ui, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  /* Mobile-first approach - base styles are for mobile */
+  /* Tablet and larger screens */
+  @media (min-width: 768px) {
+    /* Tablet specific styles */
+  }
+  
+  /* Desktop and larger screens */
+  @media (min-width: 1024px) {
+    /* Desktop specific styles */
+  }
+  
