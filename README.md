@@ -44,6 +44,12 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 
 ---
 
+## Funcionalidades principais
+- Gerenciamento de listas de compras.
+- Adição, edição e exclusão de produtos e categorias.
+- Integração com o backend para sincronização de dados.
+- Design responsivo e amigável ao usuário.
+
 ## Estrutura de Pastas
 
 ```src/
@@ -56,9 +62,3 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 ├── utils/                # Funções auxiliares e utilitárias.
 ├── App.js                # Componente raiz da aplicação.
 ├── index.js              # Ponto de entrada da aplicação.
-
-## Funcionalidades principais
-- Gerenciamento de listas de compras.
-- Adição, edição e exclusão de produtos e categorias.
-- Integração com o backend para sincronização de dados.
-- Design responsivo e amigável ao usuário.
