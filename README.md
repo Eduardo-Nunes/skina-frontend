@@ -46,7 +46,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 
 ## Estrutura de Pastas
 
-src/
+´´´src/
 ├── assets/               # Arquivos estáticos como imagens e ícones.
 ├── components/           # Componentes reutilizáveis e de maior complexidade.
 ├── pages/                # Páginas principais da aplicação.
