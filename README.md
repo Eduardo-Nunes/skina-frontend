@@ -29,15 +29,16 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 1. Clone o repositório do frontend:  
    ```bash
    git clone https://github.com/seu-usuario/skina-frontend.git
-   cd skina-frontend´´´
+   cd skina-frontend
+   
 2. Instale as Dependencias:
     ```bash 
     npm install
-    ´´´
+    
 3. Inicie o servidor de desenvolvimento:
      ```bash 
-    npm run dev 
-    ´´´
+    npm run dev
+
 4. Acesse o frontend no navegador em:
     http://localhost:3000/
 
