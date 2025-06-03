@@ -10,14 +10,14 @@ function BottomNavBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [value, setValue] = useState(() => {
-    if (location.pathname.startsWith("/listas")) return 1;
+    if (location.pathname.startsWith("/lists")) return 1;
     return 0;
   });
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
     if (newValue === 0) navigate("/");
-    if (newValue === 1) navigate("/listas");
+    if (newValue === 1) navigate("/lists");
   };
 
   return (
