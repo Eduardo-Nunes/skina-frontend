@@ -1,5 +1,6 @@
-import { Grid, Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import ProductItem from "./ProductItem";
 
 function ProductList({ products, search }) {
   return (
@@ -19,25 +20,7 @@ function ProductList({ products, search }) {
       ) : (
         products.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
-            <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-              <CardMedia 
-                component="img" 
-                height="140" 
-                image={item.image_url || `https://source.unsplash.com/random/300x200?${item.produto}`} 
-                alt={item.produto} 
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h3">
-                  {item.produto}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Categoria: {item.categoria}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                  {item.description}
-                </Typography>
-              </CardContent>
-            </Card>
+            <ProductItem item={item} />
           </Grid>
         ))
       )}
