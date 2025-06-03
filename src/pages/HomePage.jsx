@@ -1,5 +1,5 @@
 import { Box, Typography, Card, CardContent, CardMedia, Grid, Button, Container, InputBase } from "@mui/material"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { categoryProductService } from "../services/api"
 import SearchIcon from "@mui/icons-material/Search"
 
@@ -7,6 +7,7 @@ function HomePage() {
   const [featuredItems, setFeaturedItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,9 +20,16 @@ function HomePage() {
         setLoading(false)
       }
     }
-
     fetchProducts()
   }, [])
+
+  const filteredItems = useMemo(() => {
+    if (!search) return featuredItems
+    return featuredItems.filter(item =>
+      item.produto.toLowerCase().includes(search.toLowerCase()) ||
+      item.categoria.toLowerCase().includes(search.toLowerCase())
+    )
+  }, [search, featuredItems])
 
   if (loading) return <Typography>Loading...</Typography>
   if (error) return <Typography color="error">{error}</Typography>
@@ -91,7 +99,8 @@ function HomePage() {
             placeholder="Busque aqui"
             sx={{ color: '#6633FF', fontWeight: 500, width: '100%' }}
             inputProps={{ 'aria-label': 'busque aqui' }}
-            disabled
+            value={search}
+            onChange={e => setSearch(e.target.value)}
           />
         </Box>
       </Box>
@@ -101,7 +110,7 @@ function HomePage() {
         Featured Products
       </Typography>
       <Grid container spacing={3}>
-        {featuredItems.map((item) => (
+        {filteredItems.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
               <CardMedia 
