@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Typography, Avatar, Box, Button, Divider, Stack, Snackbar } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Avatar, Box, Button, Divider, Stack } from "@mui/material";
 import { useShoppingList } from "../context/ShoppingListContext";
 import { useState } from "react";
 
@@ -9,7 +9,6 @@ function getInitials(name) {
 
 function ProductItem({ item }) {
   const { shoppingList, addItem, removeItem } = useShoppingList();
-  const [toast, setToast] = useState({ open: false, message: '' });
   const observacoes = item.description
     ? item.description.split('\n').filter(Boolean)
     : [];
@@ -22,12 +21,10 @@ function ProductItem({ item }) {
       name: item.produto,
       price: item.preco || '',
     });
-    setToast({ open: true, message: 'Produto adicionado à lista!' });
   };
 
   const handleRemove = () => {
     removeItem(item.id);
-    setToast({ open: true, message: 'Produto removido da lista!' });
   };
 
   return (
@@ -75,13 +72,6 @@ function ProductItem({ item }) {
         >
           {isInList ? 'Remover da lista' : 'Adicionar à lista'}
         </Button>
-        <Snackbar
-          open={toast.open}
-          autoHideDuration={2000}
-          onClose={() => setToast({ open: false, message: '' })}
-          message={toast.message}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        />
       </CardContent>
     </Card>
   );
