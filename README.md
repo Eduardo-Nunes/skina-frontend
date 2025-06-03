@@ -45,8 +45,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 ---
 
 ## Funcionalidades principais
-- Gerenciamento de listas de compras.
-- Adição, edição e exclusão de produtos e categorias.
+- Gerenciamento de itens da lista de compras.
 - Integração com o backend para sincronização de dados.
 - Design responsivo e amigável ao usuário.
 
@@ -56,9 +55,7 @@ Antes de começar, certifique-se de ter o seguinte instalado:
 ├── assets/               # Arquivos estáticos como imagens e ícones.
 ├── components/           # Componentes reutilizáveis e de maior complexidade.
 ├── pages/                # Páginas principais da aplicação.
-├── hooks/                # Hooks personalizados.
 ├── services/             # Arquivos para integração com APIs.
-├── styles/               # Estilos globais e específicos.
-├── utils/                # Funções auxiliares e utilitárias.
-├── App.js                # Componente raiz da aplicação.
-├── index.js              # Ponto de entrada da aplicação.
+├── index.css             # Estilos globais e específicos.
+├── App.jsx               # Componente raiz da aplicação.
+├── main.jsx              # Ponto de entrada da aplicação.
