@@ -110,29 +110,43 @@ function HomePage() {
         Featured Products
       </Typography>
       <Grid container spacing={3}>
-        {filteredItems.map((item) => (
-          <Grid item xs={12} sm={6} md={4} key={item.id}>
-            <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-              <CardMedia 
-                component="img" 
-                height="140" 
-                image={`https://source.unsplash.com/random/300x200?${item.produto}`} 
-                alt={item.produto} 
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h3">
-                  {item.produto}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Category: {item.categoria}
-                </Typography>
-                <Button size="small" color="primary" sx={{ mt: 2 }}>
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
+        {filteredItems.length === 0 && search ? (
+          <Grid item xs={12} sx={{ textAlign: 'center', mt: 6 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 6 }}>
+              <SearchIcon sx={{ fontSize: 60, color: '#ccc', mb: 2 }} />
+              <Typography variant="h6" color="text.secondary">
+                Nenhum produto encontrado
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                Tente buscar por outro nome ou categoria.
+              </Typography>
+            </Box>
           </Grid>
-        ))}
+        ) : (
+          filteredItems.map((item) => (
+            <Grid item xs={12} sm={6} md={4} key={item.id}>
+              <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+                <CardMedia 
+                  component="img" 
+                  height="140" 
+                  image={`https://source.unsplash.com/random/300x200?${item.produto}`} 
+                  alt={item.produto} 
+                />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h3">
+                    {item.produto}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Category: {item.categoria}
+                  </Typography>
+                  <Button size="small" color="primary" sx={{ mt: 2 }}>
+                    Learn More
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))
+        )}
       </Grid>
     </Box>
   )
