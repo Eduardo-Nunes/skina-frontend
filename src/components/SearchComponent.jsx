@@ -22,7 +22,7 @@ function SearchComponent({ search, onSearchChange }) {
           position: 'absolute',
           inset: 0,
           background: `url('/src/assets/ic_background.svg') no-repeat right bottom`,
-          backgroundSize: { xs: 'cover', md: 'contain' },
+          backgroundSize: { xs: 'cover', md: 'cover' },
           opacity: 0.5,
           zIndex: 0,
           pointerEvents: 'none',
