@@ -1,24 +1,10 @@
 import { useState } from 'react';
 import { Box, Typography, Paper, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction, Checkbox, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-
-const initialItems = Array.from({ length: 100 }, (_, i) => ({
-  id: i + 1,
-  name: 'Itens personalizados',
-  price: 'R$ 5,28',
-  checked: true,
-}));
+import { useShoppingList } from '../context/ShoppingListContext';
 
 function ListsPage() {
-  const [items, setItems] = useState(initialItems);
-
-  const handleToggle = (id) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item
-      )
-    );
-  };
+  const { shoppingList, toggleItem } = useShoppingList();
 
   return (
     <Box sx={{ pb: 10, pt: 2, bgcolor: '#f8f4fa'}}>
@@ -26,13 +12,13 @@ function ListsPage() {
         Lista de Compras
       </Typography>
       <List>
-        {items.map((item) => (
+        {shoppingList.map((item) => (
           <ListItem
             key={item.id}
             divider
             disablePadding
             secondaryAction={
-              <Checkbox edge="end" checked={item.checked} sx={{ color: '#7c65a9' }} onChange={() => handleToggle(item.id)} />
+              <Checkbox edge="end" checked={item.checked} sx={{ color: '#7c65a9' }} onChange={() => toggleItem(item.id)} />
             }
             sx={{
               transition: 'background 0.2s',
@@ -47,7 +33,7 @@ function ListsPage() {
               primary={<Typography sx={{ fontSize: 18 }}>{item.name}</Typography>}
               secondary={<Typography sx={{ fontWeight: 500, color: '#222' }}>{item.price}</Typography>}
               sx={{ ml: 1 }}
-              onClick={() => handleToggle(item.id)}
+              onClick={() => toggleItem(item.id)}
             />
           </ListItem>
         ))}

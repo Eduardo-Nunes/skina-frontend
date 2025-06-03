@@ -1,5 +1,6 @@
-import { Card, CardContent, CardMedia, Typography, Avatar, Box, IconButton, Divider, Stack } from "@mui/material";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Card, CardContent, CardMedia, Typography, Avatar, Box, Button, Divider, Stack, Snackbar } from "@mui/material";
+import { useShoppingList } from "../context/ShoppingListContext";
+import { useState } from "react";
 
 function getInitials(name) {
   if (!name) return '';
@@ -7,10 +8,27 @@ function getInitials(name) {
 }
 
 function ProductItem({ item }) {
-
+  const { shoppingList, addItem, removeItem } = useShoppingList();
+  const [toast, setToast] = useState({ open: false, message: '' });
   const observacoes = item.description
     ? item.description.split('\n').filter(Boolean)
     : [];
+
+  const isInList = shoppingList.some((i) => i.id === item.id);
+
+  const handleAdd = () => {
+    addItem({
+      id: item.id,
+      name: item.produto,
+      price: item.preco || '',
+    });
+    setToast({ open: true, message: 'Produto adicionado à lista!' });
+  };
+
+  const handleRemove = () => {
+    removeItem(item.id);
+    setToast({ open: true, message: 'Produto removido da lista!' });
+  };
 
   return (
     <Card sx={{ borderRadius: 3, boxShadow: 2, overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 420 }}>
@@ -48,6 +66,22 @@ function ProductItem({ item }) {
             </Typography>
           ))}
         </Stack>
+        <Button
+          variant={isInList ? "outlined" : "contained"}
+          color={isInList ? "error" : "secondary"}
+          fullWidth
+          sx={{ mt: 2, bgcolor: isInList ? undefined : '#7c65a9', color: isInList ? undefined : '#fff', fontWeight: 700 }}
+          onClick={isInList ? handleRemove : handleAdd}
+        >
+          {isInList ? 'Remover da lista' : 'Adicionar à lista'}
+        </Button>
+        <Snackbar
+          open={toast.open}
+          autoHideDuration={2000}
+          onClose={() => setToast({ open: false, message: '' })}
+          message={toast.message}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        />
       </CardContent>
     </Card>
   );
