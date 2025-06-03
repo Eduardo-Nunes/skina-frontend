@@ -7,10 +7,9 @@ import MenuIcon from "@mui/icons-material/Menu"
 import HomeIcon from "@mui/icons-material/Home"
 
 const pages = [
-  { name: "Home", path: "/" },
-  { name: "Products", path: "/products" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "Produtos", path: "/" },
+  { name: "Listas", path: "/listas" },
+  { name: "Contato", path: "/contato" },
 ]
 
 function Navbar() {
